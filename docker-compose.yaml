@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  opie:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./docker-compose.env
+    environment:
+      - NODE_ENV=production
+    command: npm start
+    ports:
+      - '80:3000'
+    volumes:
+      - .:/opie
+    depends_on:
+      - mongo
+    restart: always
+    container_name: opie
+    links:
+      - mongo:mongo
+  mongo:
+    image: mongo
+    env_file:
+      - ./docker-compose.env
+    restart: always
+    container_name: mongo
+    ports:
+      - 8081:8081
+    volumes:
+     - /mongo:/data/db
+
