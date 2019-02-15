@@ -19,7 +19,8 @@ const styles = {
     backgroundColor: "transparent",
     border: "none",
     margin: "0",
-    padding: "15px"
+    padding: "15px",
+    cursor: "pointer"
   }
 };
 
@@ -30,9 +31,11 @@ const copy = () => {
     range.select().createTextRange();
     document.execCommand("copy");
   } else if (window.getSelection) {
+    const selection = window.getSelection();
     const range = document.createRange();
     range.selectNode(document.getElementById("note"));
-    window.getSelection().addRange(range);
+    selection.removeAllRanges();
+    selection.addRange(range);
     document.execCommand("copy");
   }
 };

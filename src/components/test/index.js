@@ -4,7 +4,7 @@ import { startTest, finishTest, updateTest, saveTest } from "src/actions/test";
 import { faStop, faPlay, faSave } from "@fortawesome/free-solid-svg-icons";
 import Duration from "./duration";
 import Button from "./button";
-import { accentDark, accentLight, primaryDark } from "src/theme";
+import { accentDark } from "src/theme";
 
 class Test extends Component {
   constructor(props) {
