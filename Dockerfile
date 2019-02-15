@@ -1,9 +1,9 @@
 FROM node:lts
 
 RUN mkdir /opie
+COPY . /opie/
+
 WORKDIR /opie
-COPY /src /opie/src
-COPY ["package.json", "package-lock.json*", "./"]
 
 RUN yarn install
 

@@ -4,16 +4,16 @@ import { selectRandomPatient } from "src/actions/patient";
 import { faUser, faTable, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { showTesting, showReport } from "src/actions/ui";
+import { primaryDarker, primaryLight } from "src/theme";
 
 const styles = {
-  header: {
-    display: "flex",
-    backgroundColor: "#333",
-    color: "#fff"
-  },
-  selected: {
-    backgroundColor: "#000"
-  },
+  header: Object.assign(
+    {
+      display: "flex"
+    },
+    primaryDarker
+  ),
+  selected: primaryLight,
   reset: {
     textAlign: "right"
   },
@@ -24,16 +24,18 @@ const styles = {
   patientName: {
     marginRight: "10px"
   },
-  navItem: {
-    backgroundColor: "transparent",
-    color: "#fff",
-    radius: "0",
-    border: "none",
-    flexGrow: "1",
-    fontSize: "25px",
-    lineHeight: "40px",
-    cursor: "pointer"
-  }
+  navItem: Object.assign(
+    {
+      backgroundColor: "transparent",
+      radius: "0",
+      border: "none",
+      flexGrow: "1",
+      fontSize: "25px",
+      lineHeight: "40px",
+      cursor: "pointer"
+    },
+    primaryDarker
+  )
 };
 
 class Header extends Component {

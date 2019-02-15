@@ -13,7 +13,7 @@ services:
     ports:
       - '80:3000'
     volumes:
-      - .:/opie
+      - ./src:/opie/src
     restart: always
     container_name: opie-frontend
   opie-backend:
@@ -27,8 +27,6 @@ services:
     command: yarn backend
     ports:
       - '5000:5000'
-    volumes:
-      - .:/opie
     depends_on:
       - mongo
     restart: always
@@ -45,4 +43,4 @@ services:
     ports:
         - '27018:27018'
     volumes:
-     - /mongo:/data/db
+     - ./mongo:/data/db

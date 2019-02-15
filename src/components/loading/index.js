@@ -9,7 +9,7 @@ const styles = {
     left: "0",
     right: "0",
     display: "flex",
-    backgroundColor: "rgba(50, 50, 50, .8)",
+    backgroundColor: "rgba(50, 50, 50, .9)",
     justifyContent: "center",
     transition: "0.5s"
   },

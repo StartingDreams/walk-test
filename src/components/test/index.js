@@ -4,6 +4,7 @@ import { startTest, finishTest, updateTest, saveTest } from "src/actions/test";
 import { faStop, faPlay, faSave } from "@fortawesome/free-solid-svg-icons";
 import Duration from "./duration";
 import Button from "./button";
+import { accentDark, accentLight, primaryDark } from "src/theme";
 
 class Test extends Component {
   constructor(props) {
@@ -51,17 +52,13 @@ class Test extends Component {
       <Button
         onClickHandler={this.saveTest}
         icon={faSave}
-        color="#333"
-        backgroundColor="#ee0"
-        borderColor="#dd0"
+        colors={accentDark}
       />
     ) : (
       <Button
         onClickHandler={this.finishTest}
         icon={faStop}
-        color="#fff"
-        backgroundColor="#006"
-        borderColor="#005"
+        colors={accentDark}
       />
     );
   }

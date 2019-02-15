@@ -1,24 +1,19 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { accentDark } from "src/theme";
 
 const styles = {
   button: {
     fontSize: "40px",
     lineHeight: "100px",
-    backgroundColor: "#AAA",
-    borderColor: "#999",
     borderRadius: "20px",
-    color: "#333",
-    width: "50%"
+    width: "50%",
+    border: "none"
   }
 };
 
 const Button = props => {
-  const colors = {
-    color: props.color || styles.button.color,
-    backgroundColor: props.backgroundColor || styles.button.backgroundColor,
-    borderColor: props.borderColor || styles.button.borderColor
-  };
+  const colors = props.colors || accentDark;
   return (
     <button
       style={Object.assign({}, styles.button, colors)}

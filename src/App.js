@@ -6,16 +6,25 @@ import Header from "src/components/header";
 import Test from "src/components/test";
 import Result from "src/components/result";
 import Report from "src/components/report";
-
+import { primaryLight } from "src/theme";
 const styles = {
-  bodyContainer: {
-    padding: "10px 20px",
-    display: "flex",
-    justifyContent: "center",
-    textAlign: "center",
-    flexDirection: "column",
-    alignItems: "center"
-  }
+  app: Object.assign(
+    {
+      height: "100vh"
+    },
+    primaryLight
+  ),
+  bodyContainer: Object.assign(
+    {
+      padding: "10px 20px",
+      display: "flex",
+      justifyContent: "center",
+      textAlign: "center",
+      flexDirection: "column",
+      alignItems: "center"
+    },
+    primaryLight
+  )
 };
 
 class App extends Component {
@@ -26,7 +35,7 @@ class App extends Component {
     const isLoading = this.props.loadingReducer.loading > 0;
     const mode = this.props.uiReducer.mode;
     return (
-      <div className="App">
+      <div className="App" style={styles.app}>
         <Header />
         <div style={styles.bodyContainer}>
           {mode === "testing" && <Test />}

@@ -1,12 +1,13 @@
-html, body {
-  user-select: none;
- 
+html {
+  height: 100%;
 }
 body {
+  user-select: none;
+  min-height: 100%;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
-  color: #333;
 }
 button, input[type=button] {
   font-family: 'Open Sans', sans-serif;
+  outline: none;
 }

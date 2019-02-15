@@ -1,6 +1,7 @@
 import React from "react";
 import { faCalendar, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { primaryDark, primaryLight, dividerColor } from "src/theme";
 
 const styles = {
   table: {
@@ -9,18 +10,25 @@ const styles = {
     width: "100%",
     maxWidth: "500px"
   },
-  cellHeader: {
-    backgroundColor: "#333",
-    color: "#fff",
-    textAlign: "center"
-  },
-  cell: {
-    backgroundColor: "#eee",
-    color: "#333",
-    fontSize: "23px",
-    padding: "3px 10px",
-    border: "1px solid #333"
-  },
+  cellHeader: Object.assign(
+    {
+      backgroundColor: "#333",
+      color: "#fff",
+      textAlign: "center"
+    },
+    primaryDark
+  ),
+  cell: Object.assign(
+    {
+      backgroundColor: "#eee",
+      color: "#333",
+      fontSize: "23px",
+      padding: "3px 10px",
+      border: "1px solid #333"
+    },
+    primaryLight,
+    dividerColor
+  ),
   cellDuration: {
     textAlign: "center"
   }
