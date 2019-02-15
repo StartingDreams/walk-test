@@ -52,7 +52,7 @@ const ReportTable = props => {
       <tbody>
         {props.walkTests.map((walkTest, index) => {
           return (
-            <tr>
+            <tr key={index}>
               <td style={styles.cell}>
                 {new Date(walkTest.start).toDateString()}
               </td>
