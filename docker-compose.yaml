@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  opie:
+  opie-frontend:
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,15 +9,30 @@ services:
       - ./docker-compose.env
     environment:
       - NODE_ENV=production
-    command: npm start
+    command: yarn start
     ports:
       - '80:3000'
+    volumes:
+      - .:/opie
+    restart: always
+    container_name: opie-frontend
+  opie-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./docker-compose.env
+    environment:
+      - NODE_ENV=production
+    command: yarn backend
+    ports:
+      - '5000:5000'
     volumes:
       - .:/opie
     depends_on:
       - mongo
     restart: always
-    container_name: opie
+    container_name: opie-backend
     links:
       - mongo:mongo
   mongo:
@@ -26,8 +41,8 @@ services:
       - ./docker-compose.env
     restart: always
     container_name: mongo
+    command: mongod --port 27018
     ports:
-      - 8081:8081
+        - '27018:27018'
     volumes:
      - /mongo:/data/db
-

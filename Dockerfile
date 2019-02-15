@@ -1,10 +1,11 @@
-FROM node:lts-alpine
+FROM node:lts
 
 RUN mkdir /opie
 WORKDIR /opie
 COPY /src /opie/src
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install --production --silent && mv node_modules ../
+RUN yarn install
 
+EXPOSE 5000
 EXPOSE 3000

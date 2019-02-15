@@ -1,26 +1,53 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getAllPatients } from "src/actions/patient";
+import Loading from "src/components/loading";
+import Header from "src/components/header";
+import Test from "src/components/test";
+import Result from "src/components/result";
+import Report from "src/components/report";
+
+const styles = {
+  bodyContainer: {
+    padding: "10px 20px",
+    display: "flex",
+    justifyContent: "center",
+    textAlign: "center",
+    flexDirection: "column",
+    alignItems: "center"
+  }
+};
 
 class App extends Component {
+  componentWillMount() {
+    this.props.getAllPatients();
+  }
   render() {
+    const isLoading = this.props.loadingReducer.loading > 0;
+    const mode = this.props.uiReducer.mode;
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+        <div style={styles.bodyContainer}>
+          {mode === "testing" && <Test />}
+          {mode === "result" && <Result />}
+          {mode === "report" && <Report />}
+        </div>
+        {isLoading === true && <Loading />}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  ...state
+});
+
+const mapDispatchToProps = dispatch => ({
+  getAllPatients: () => dispatch(getAllPatients())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
